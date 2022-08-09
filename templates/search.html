@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <section class="latest-posts">
+
+      <div class="container">
+        <header>
+          <h1>This is the search Reasult</h1>
+        </header>
+        <div class="row">
+          {% for obj in qs %}
+          <div class="post col-md-4">
+            <div class="post-thumbnail"><a href="{{obj.get_absolute_url}}"><img src="{{obj.thubnail.url}}" width="640" height="450" alt="..." class="img-fluid"></a></div>
+            <div class="post-details">
+              <div class="post-meta d-flex justify-content-between">
+                <div class="date">{{obj.timestamp}}</div>
+                {% for cat in obj.categories.all %}
+                <div class="category"><a href="#">{{cat.name}}</a></div>
+                {% endfor %}
+              </div><a href="post.html">
+                <h3 class="h4">{{obj.title}}</h3></a>
+              <p class="text-muted"> {{obj.overview|truncatewords:15}}</p>
+
+            </div>
+
+          </div>
+          {% endfor %}
+       </div>
+
+    </div>
+    </section>
+
+{% endblock %}

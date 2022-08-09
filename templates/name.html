@@ -1,0 +1,6 @@
+<div class="image col-lg-5"><img src="{{obj.thubnail}}" alt="..."></div>
+ {% for obj in qs%}
+<p>
+    <img src = {{obj.thubnail.url}}>
+</p>
+{% endfor %}
